@@ -1,7 +1,7 @@
 # **Technical Test - React**  
 
 ## 🚀 Live Demo  
-🔗 **[Deployed App](https://your-deployment-link.com/)**  
+🔗 **[Deployed App]([https://your-deployment-link.com/](https://react-pokemon-crud.vercel.app/))**  
 
 ## 📦 Installation  
 
