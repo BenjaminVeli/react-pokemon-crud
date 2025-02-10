@@ -1,6 +1,17 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Home from "./pages/Home"
+import ListUsers from "./pages/ListUsers"
+
 const App = () => {
   return (
-    <div>App</div>
+    <>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/list-users" element={<ListUsers />} />
+        </Routes>
+      </Router>
+    </>
   )
 }
 
