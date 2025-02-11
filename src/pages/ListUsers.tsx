@@ -25,6 +25,7 @@ const ListUsers = () => {
               <p>Correo: {user.correo}</p>
               <p>Fecha de Nacimiento: {user.fechaNacimiento}</p>
               <p>Teléfono: {user.phone}</p>
+              <p>Pokemon: {user.namePokemon}</p>
             </li>
           ))}
         </div>
