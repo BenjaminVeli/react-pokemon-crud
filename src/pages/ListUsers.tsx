@@ -9,10 +9,14 @@ import useUserSearch from "@/hooks/useUserSearch";
 import { User } from "@/types";
 
 import { IoSearchSharp } from "react-icons/io5";
+import { useState } from "react";
+
+const ITEMS_PER_PAGE = 8;
 
 const ListUsers = () => {
   const { users, deleteUser, editUser } = useUserForm();
   const { searchQuery, setSearchQuery, filteredUsers } = useUserSearch(users);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleDeleteUser = (id: number) => {
     deleteUser(id);
@@ -23,6 +27,12 @@ const ListUsers = () => {
     editUser(id, data);
     toast.success('Usuario actualizado exitosamente');
   };
+
+  const totalPages = Math.ceil(filteredUsers.length / ITEMS_PER_PAGE);
+  const paginatedUsers = filteredUsers.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
 
   return (
     <div className="min-h-screen bg-slate-100">
@@ -65,7 +75,7 @@ const ListUsers = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredUsers.map((user) => (
+                  {paginatedUsers.map((user) => (
                     <tr key={user.id} className="border-b dark:border-gray-300 dark:hover:bg-gray-300 transition-all duration-500">
                       <td className="px-4 py-3 font-medium whitespace-nowrap text-stone-900">{user.id}</td>
                       <td className="px-4 py-3 font-medium whitespace-nowrap text-stone-900">{user.nombres}</td>
@@ -80,7 +90,7 @@ const ListUsers = () => {
                       </td>
                     </tr>
                   ))}
-                  {filteredUsers.length === 0 && (
+                  {paginatedUsers.length === 0 && (
                     <tr>
                       <td colSpan={5} className="px-4 py-3 text-center text-gray-500">
                         No se encontraron usuarios con ese nickname.
@@ -90,6 +100,28 @@ const ListUsers = () => {
                 </tbody>
               </table>
             </div>
+
+            {/* Paginación */}
+            {totalPages > 1 && (
+              <div className="flex justify-center space-x-2 mt-4">
+                <button
+                  onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                  disabled={currentPage === 1}
+                  className="px-4 py-2 bg-gray-300 rounded-lg disabled:opacity-50"
+                >
+                  Anterior
+                </button>
+                <span className="px-4 py-2 font-medium">Página {currentPage} de {totalPages}</span>
+                <button
+                  onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                  disabled={currentPage === totalPages}
+                  className="px-4 py-2 bg-gray-300 rounded-lg disabled:opacity-50"
+                >
+                  Siguiente
+                </button>
+              </div>
+            )}
+
           </div>
         </div>
       </div>

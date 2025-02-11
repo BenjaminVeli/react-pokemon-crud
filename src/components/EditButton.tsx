@@ -63,7 +63,7 @@ const EditButton = ({ user, onEdit }: EditButtonProps) => {
                     <RiBallPenFill className="text-blue-500" />
                 </Button>
             </AlertDialogTrigger>
-            <AlertDialogContent>
+            <AlertDialogContent className="max-h-[400px] overflow-y-auto">
                 <AlertDialogHeader>
                     <AlertDialogTitle>Editar información del usuario</AlertDialogTitle>
                     <AlertDialogDescription>
