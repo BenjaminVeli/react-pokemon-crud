@@ -27,7 +27,6 @@ const EditButton = ({ user, onEdit }: EditButtonProps) => {
     const [pokemons, setPokemons] = useState<Pokemon[]>([]);
     const [selectedPokemon, setSelectedPokemon] = useState<Pokemon | null>(null);
 
-    // Cargar lista de Pokémon al abrir el modal
     useEffect(() => {
         getPokemons().then((data) => setPokemons(data.results));
     }, []);
