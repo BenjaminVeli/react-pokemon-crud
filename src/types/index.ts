@@ -1,5 +1,6 @@
 // INTERFACE FOR USER
 export interface User {
+    id: number;
     nombres: string;
     apellidos: string;
     nickname: string;
@@ -19,6 +20,9 @@ export interface NavItemsProps {
 export interface Pokemon {
     name: string;
     url: string;
+    sprites?: {
+        front_default: string;
+    };
 }
 
 // INTERFACE FOR PokemonObject
