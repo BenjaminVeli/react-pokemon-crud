@@ -21,7 +21,7 @@ export interface NavItemsProps {
 export interface Pokemon {
     name: string;
     url: string;
-    sprites?: {
+    sprites: {
         front_default: string;
     };
 }

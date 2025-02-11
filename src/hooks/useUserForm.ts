@@ -26,11 +26,21 @@ const useUserForm = () => {
     });
   };
 
+  const editUser = (id: number, data: Partial<User>) => {
+    setUsers(prevUsers =>
+      prevUsers.map(user =>
+        user.id === id ? { ...user, ...data } : user
+      )
+    );
+  };
+
   const deleteUser = (id: number) => {
     setUsers(prevUsers => prevUsers.filter(user => user.id !== id));
   };
 
-  return { users, addUser, deleteUser };
+
+
+  return { users, addUser, deleteUser, editUser };
 };
 
 export default useUserForm;

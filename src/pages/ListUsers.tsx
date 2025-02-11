@@ -5,18 +5,22 @@ import EditButton from "@/components/EditButton";
 import ViewButton from "@/components/ViewButton";
 import DeleteButton from "../components/DeleteButton";
 import useUserForm from "@/hooks/useUserForm";
+import { User } from "@/types";
 
 import { IoSearchSharp } from "react-icons/io5";
 
 const ListUsers = () => {
-  const { users, deleteUser } = useUserForm();
+  const { users, deleteUser, editUser } = useUserForm();
 
   const handleDeleteUser = (id: number) => {
     deleteUser(id);
     toast.success('Usuario eliminado exitosamente');
   };
 
-
+  const handleEditUser = (id: number, data: Partial<User>) => {
+    editUser(id, data);
+    toast.success('Usuario actualizado exitosamente');
+  };
 
   return (
     <div className="min-h-screen bg-slate-100">
@@ -80,7 +84,7 @@ const ListUsers = () => {
                       <td className="px-4 py-3 font-medium whitespace-nowrap text-stone-900">
                         <div className="flex items-center justify-center space-x-4">
                           <ViewButton user={user} />
-                          <EditButton />
+                          <EditButton user={user} onEdit={handleEditUser} />
                           <DeleteButton
                             userId={user.id}
                             onDelete={handleDeleteUser}
