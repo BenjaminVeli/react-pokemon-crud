@@ -1,12 +1,12 @@
 import Header from "../components/Header";
 import toast, { Toaster } from "react-hot-toast";
 
+import EditButton from "@/components/EditButton";
+import ViewButton from "@/components/ViewButton";
 import DeleteButton from "../components/DeleteButton";
 import useUserForm from "@/hooks/useUserForm";
 
 import { IoSearchSharp } from "react-icons/io5";
-// import { RiBallPenFill } from "react-icons/ri";
-// import { RiEyeFill } from "react-icons/ri";
 
 const ListUsers = () => {
   const { users, deleteUser } = useUserForm();
@@ -79,6 +79,8 @@ const ListUsers = () => {
                       </td>
                       <td className="px-4 py-3 font-medium whitespace-nowrap text-stone-900">
                         <div className="flex items-center justify-center space-x-4">
+                          <ViewButton user={user} />
+                          <EditButton />
                           <DeleteButton
                             userId={user.id}
                             onDelete={handleDeleteUser}

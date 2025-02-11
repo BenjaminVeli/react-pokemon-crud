@@ -15,9 +15,12 @@ const Home = () => {
   const watchPokemon = watch("namePokemon");
 
   const onSubmit = (data: User) => {
+    if (selectedPokemon && selectedPokemon.sprites) {
+      data.pokemonImageUrl = selectedPokemon.sprites.front_default; 
+    }
     addUser(data);
     reset();
-    toast.success("Formulado enviado correctamente!");
+    toast.success("Formulario enviado correctamente!");
   };
 
   useEffect(() => {

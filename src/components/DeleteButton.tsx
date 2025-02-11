@@ -8,8 +8,8 @@ const DeleteButton = ({ onDelete, userId }: { onDelete: (id: number) => void, us
         <AlertDialog>
             <AlertDialogTrigger asChild>
                 <Button variant="outline">
-                    <span>Eliminar</span>
-                    <IoTrash className="text-red-900" />
+                    <span className="text-red-500">Eliminar</span>
+                    <IoTrash className="text-red-500" />
                 </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>

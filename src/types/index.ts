@@ -9,6 +9,7 @@ export interface User {
     fechaNacimiento: string;
     phone: string;
     namePokemon: string;
+    pokemonImageUrl?: string; 
 }
 
 // INTERFACE FOR HEADER
